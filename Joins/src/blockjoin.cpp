@@ -99,7 +99,9 @@ void BlockNestedLoopJoin(JoinSpec specOfR, JoinSpec specOfS, int B, long& pinReq
 	}
     delete jointResult;
     delete scan_R;
-	delete[] recPtr_R, recPtr_S, recPtr_Block;
+	delete[] recPtr_R;
+	delete[] recPtr_S;
+	delete[] recPtr_Block;
 	MINIBASE_BM->GetStat(pinRequests, pinMisses);
 	duration = ( clock() - start) / (double) CLOCKS_PER_SEC;
 }

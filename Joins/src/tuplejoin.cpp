@@ -65,10 +65,10 @@ void TupleNestedLoopJoin(JoinSpec specOfR, JoinSpec specOfS, long& pinRequests, 
         Scan *scan_S = specOfS.file->OpenScan(status);
         if (status != OK){
         cerr << "ERROR: Cannot open scan on the relation S.\n";
-        }
-        int* join_col_R = (int*) &recPtr_R[specOfR.offset]
+      }
+        int* join_col_R = (int*) &recPtr_R[specOfR.offset];
         while(scan_S -> GetNext(rid_S, recPtr_S, specOfS.recLen) == OK){             
-            int* join_col_S = (int*) &recPtr_S[specOfS.offset]
+            int* join_col_S = (int*) &recPtr_S[specOfS.offset];
             if (*join_col_R == *join_col_S){
                 MakeNewRecord( recPtr_Res, recPtr_R, recPtr_S, specOfR.recLen, specOfS.recLen);
                 jointResult -> InsertRecord(recPtr_Res, specOfR.recLen+specOfS.recLen, rid_Res);	
@@ -78,7 +78,9 @@ void TupleNestedLoopJoin(JoinSpec specOfR, JoinSpec specOfS, long& pinRequests, 
     }
     delete jointResult;
     delete scan_R;
-    delete[] recPtr_R, recPtr_S, recPtr_Res;
+    delete[] recPtr_R;
+    delete[] recPtr_S;
+    delete[] recPtr_Res;
     MINIBASE_BM->GetStat(pinRequests, pinMisses); 
     duration = ( clock() - start) / (double) CLOCKS_PER_SEC;
 }
