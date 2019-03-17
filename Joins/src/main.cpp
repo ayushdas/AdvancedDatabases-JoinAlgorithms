@@ -116,6 +116,7 @@ void callJoins_with_swap( int numOfBuf, int numOfRecR, int numOfRecS, long pinNo
 	// int blocksize = (MINIBASE_BM->GetNumOfUnpinnedBuffers()-3*3)*MINIBASE_PAGESIZE;
 	int blocksize = 50;
 	TupleNestedLoopJoin(specOfR, specOfS,pinNo[0], pinMisses[0], duration[0]);
+	MINIBASE_BM->PrintStat();
 	BlockNestedLoopJoin(specOfR, specOfS, blocksize, pinNo[1] ,pinMisses[1], duration[1]);
 	TupleNestedLoopJoin(specOfS, specOfR,pinNo[2], pinMisses[2], duration[2]);
 	BlockNestedLoopJoin(specOfS, specOfR, blocksize, pinNo[3] ,pinMisses[3], duration[3]);
