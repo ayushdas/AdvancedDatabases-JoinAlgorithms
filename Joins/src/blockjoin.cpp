@@ -63,7 +63,7 @@ void BlockNestedLoopJoin(JoinSpec specOfR, JoinSpec specOfS, int B, long& pinReq
 	// B represents the number of tuples of the outer relation
 	// It is the size of the array storing the outer relation
 	int recordsPerRBlock = B; // Records per block
-	int block_size = B * specOfR.recLen; // Size of the block in bytes
+	int block_size = B * std::max(specOfR.recLen,specOfS.recLen); // Size of the block in bytes
 	char *recPtr_Block = new char[block_size];
 	while(!blocksDone) 	// Iterate over the blocks
 	{

@@ -1,0 +1,61 @@
+*****************************
+Number of Buffer Pages are: 50
+The number of records in R are: 10000
+The number of records in S are: 2500
+Statistics for Tuple Join
+ Number of Page Misses =  485096
+ Duration of Iteration = 2.14
+Statistics for Block Join
+ Number of Page Misses =  9763
+ Duration of Iteration = 0.3
+*****************************
+*****************************
+Number of Buffer Pages are: 50
+The number of records in R are: 10000
+The number of records in S are: 2500
+Statistics for Tuple Join
+Number of Page Misses =  485096
+Duration of Iteration = 1.99
+Statistics for Block Join
+Number of Page Misses =  9763
+Duration of Iteration = 0.27
+*****************************
+*****************************
+Number of Buffer Pages are: 50
+The number of records in R are: 10000
+The number of records in S are: 2500
+Statistics for Tuple Join
+umber of Page Misses =  485096
+uration of Iteration = 2
+Statistics for Block Join
+umber of Page Misses =  9763
+uration of Iteration = 0.27
+*****************************
+*****************************
+Number of Buffer Pages are: 50
+The number of records in R are: 10000
+The number of records in S are: 2500
+Statistics for Tuple Join
+mber of Page Misses =  485096
+ration of Iteration = 2.07
+Statistics for Block Join
+mber of Page Misses =  9763
+ration of Iteration = 0.26
+*****************************
+*****************************
+Number of Buffer Pages are: 50
+The number of records in R are: 10000
+The number of records in S are: 2500
+Statistics for Tuple Join
+ber of Page Misses =  485096
+ation of Iteration = 2.07
+Statistics for Block Join
+ber of Page Misses =  9763
+ation of Iteration = 0.26
+*****************************
+*** Average Statistics ***Statistics for Tuple Join
+Average Number of Page Misses =  485096
+Average Duration of Iteration = 2.054
+Statistics for Block Join
+Average Number of Page Misses =  9763
+Average Duration of Iteration = 0.272
