@@ -14,7 +14,7 @@ int MINIBASE_RESTART_FLAG = 0;// used in minibase part
 #define NUM_OF_DB_PAGES  2000 // define # of DB pages
 #define NUM_OF_BUF_PAGES 50 //50 // define Buf manager size.You will need to change this for the analysis
 // Buffer Pool Page sizes 25,50,75,100
-void callJoins( int numOfBuf, int numOfRecR, int numOfRecS, long pinNo[2], 
+void Joins( int numOfBuf, int numOfRecR, int numOfRecS, long pinNo[2], 
 	 long pinMisses[2], double duration[2] );
 void callJoins_with_swap( int numOfBuf, int numOfRecR, int numOfRecS, long pinNo[4], 
 	 long pinMisses[4], double duration[4] );
@@ -47,16 +47,16 @@ void interchanging_call_joins()
 		cout<<"The number of records in R are: "<<NUM_OF_REC_IN_R<<"\n";
 		cout<<"The number of records in S are: "<<NUM_OF_REC_IN_S<<"\n";
 		cout << "Statistics for Tuple Join\n";
-	    	cout <<numOfRepetition+" Number of Page Misses =  "<<pinMisses[0]<<endl;
+	    	// cout <<numOfRepetition+" Number of Page Misses =  "<<pinMisses[0]<<endl;
 		cout <<numOfRepetition+" Duration of Iteration = "<<duration[0]<<endl;
 		cout << "Statistics for Block Join\n";
-	    	cout <<numOfRepetition+" Number of Page Misses =  "<<pinMisses[1]<<endl;
+	    	// cout <<numOfRepetition+" Number of Page Misses =  "<<pinMisses[1]<<endl;
 		cout <<numOfRepetition+" Duration of Iteration = "<<duration[1]<<endl;
 		cout << "Statistics for interchanged Tuple Join\n";
-	    	cout <<numOfRepetition+" Number of Page Misses =  "<<pinMisses[2]<<endl;
+	    	// cout <<numOfRepetition+" Number of Page Misses =  "<<pinMisses[2]<<endl;
 		cout <<numOfRepetition+" Duration of Iteration = "<<duration[2]<<endl;
 		cout << "Statistics for interchanged Block Join\n";
-	    	cout <<numOfRepetition+" Number of Page Misses =  "<<pinMisses[3]<<endl;
+	    	// cout <<numOfRepetition+" Number of Page Misses =  "<<pinMisses[3]<<endl;
 		cout <<numOfRepetition+" Duration of Iteration = "<<duration[3]<<endl;
 		avgPinMisses[0] += pinMisses[0];
 		avgDuration[0] += duration[0];
@@ -73,16 +73,16 @@ void interchanging_call_joins()
 	}
 	cout<<"*** Average Statistics ***";
 		cout << "Statistics for Tuple Join\n";
-	    	cout <<"Average"<<" Number of Page Misses =  "<<avgPinMisses[0]/numOfRepitions<<endl;
+	    	// cout <<"Average"<<" Number of Page Misses =  "<<avgPinMisses[0]/numOfRepitions<<endl;
 		cout <<"Average"<<" Duration of Iteration = "<<avgDuration[0]/numOfRepitions<<endl;
 		cout << "Statistics for Block Join\n";
-	    	cout <<"Average"<<" Number of Page Misses =  "<<avgPinMisses[1]/numOfRepitions<<endl;
+	    	// cout <<"Average"<<" Number of Page Misses =  "<<avgPinMisses[1]/numOfRepitions<<endl;
 		cout <<"Average"<<" Duration of Iteration = "<<avgDuration[1]/numOfRepitions<<endl;
 		cout << "Statistics for Interchanged Tuple Join\n";
-	    	cout <<"Average"<<" Number of Page Misses =  "<<avgPinMisses[2]/numOfRepitions<<endl;
+	    	// cout <<"Average"<<" Number of Page Misses =  "<<avgPinMisses[2]/numOfRepitions<<endl;
 		cout <<"Average"<<" Duration of Iteration = "<<avgDuration[2]/numOfRepitions<<endl;
 		cout << "Statistics for Interchanged Block Join\n";
-	    	cout <<"Average"<<" Number of Page Misses =  "<<avgPinMisses[3]/numOfRepitions<<endl;
+	    	// cout <<"Average"<<" Number of Page Misses =  "<<avgPinMisses[3]/numOfRepitions<<endl;
 		cout <<"Average"<<" Duration of Iteration = "<<avgDuration[3]/numOfRepitions<<endl;
 		delete[] avgPinMisses;delete[] avgDuration;
 }
@@ -115,40 +115,40 @@ void callJoins_with_swap( int numOfBuf, int numOfRecR, int numOfRecS, long pinNo
 
 	// int blocksize = (MINIBASE_BM->GetNumOfUnpinnedBuffers()-3*3)*MINIBASE_PAGESIZE;
 	int blocksize = 50;
+	cout << "\nBuffer statistics for Tuple Nested Loop Join\n";
 	TupleNestedLoopJoin(specOfR, specOfS,pinNo[0], pinMisses[0], duration[0]);
 	MINIBASE_BM->PrintStat();
+	cout << "\nBuffer statistics for Block Nested Loop Join\n";
 	BlockNestedLoopJoin(specOfR, specOfS, blocksize, pinNo[1] ,pinMisses[1], duration[1]);
+	MINIBASE_BM->PrintStat();
+	cout << "\nBuffer statistics for Tuple Nested Loop Join with interchange\n";
 	TupleNestedLoopJoin(specOfS, specOfR,pinNo[2], pinMisses[2], duration[2]);
+	MINIBASE_BM->PrintStat();
+	cout << "\nBuffer statistics for Block Nested Loop Join with interchange\n";
 	BlockNestedLoopJoin(specOfS, specOfR, blocksize, pinNo[3] ,pinMisses[3], duration[3]);
+	MINIBASE_BM->PrintStat();
 	delete minibase_globals;
 }
 void changingTheBufferPoolSize()
 {
-	// int count = 0;
-	// double *avgPinNo = new double[2];
 	double *avgPinMisses = new double[2];avgPinMisses[0]=0.0;
 	double *avgDuration = new double[2];avgDuration[0]=0.0;
-	//double avgPinMisses_tuple = 0.0;
-	//double avgDuration_tuple = 0.0;
 	int numOfRepitions = 5;
 	for(int numOfRepetition = 0; numOfRepetition < numOfRepitions; numOfRepetition++)
 	{
-
-		// do joins
 		long *pinNo = new long[2];
 		long *pinMisses = new long[2];
 		double *duration = new double[2];
-
-		callJoins( NUM_OF_BUF_PAGES, NUM_OF_REC_IN_R, NUM_OF_REC_IN_S,pinNo,pinMisses, duration);
 		cout<<"*****************************"<<endl;
+		Joins( NUM_OF_BUF_PAGES, NUM_OF_REC_IN_R, NUM_OF_REC_IN_S,pinNo,pinMisses, duration);
 		cout<<"Number of Buffer Pages are: "<<NUM_OF_BUF_PAGES<<endl;
 		cout<<"The number of records in R are: "<<NUM_OF_REC_IN_R<<"\n";
 		cout<<"The number of records in S are: "<<NUM_OF_REC_IN_S<<"\n";
 		cout << "Statistics for Tuple Join\n";
-	    	cout <<numOfRepetition+" Number of Page Misses =  "<<pinMisses[0]<<endl;
+	    	// cout <<numOfRepetition+" Number of Page Misses =  "<<pinMisses[0]<<endl;
 		cout <<numOfRepetition+" Duration of Iteration = "<<duration[0]<<endl;
 		cout << "Statistics for Block Join\n";
-	    	cout <<numOfRepetition+" Number of Page Misses =  "<<pinMisses[1]<<endl;
+	    	// cout <<numOfRepetition+" Number of Page Misses =  "<<pinMisses[1]<<endl;
 		cout <<numOfRepetition+" Duration of Iteration = "<<duration[1]<<endl;
 		avgPinMisses[0] += pinMisses[0];
 		avgDuration[0] += duration[0];
@@ -161,10 +161,10 @@ void changingTheBufferPoolSize()
 	}
 	cout<<"*** Average Statistics ***";
 		cout << "Statistics for Tuple Join\n";
-	    	cout <<"Average"<<" Number of Page Misses =  "<<avgPinMisses[0]/numOfRepitions<<endl;
+	    	// cout <<"Average"<<" Number of Page Misses =  "<<avgPinMisses[0]/numOfRepitions<<endl;
 		cout <<"Average"<<" Duration of Iteration = "<<avgDuration[0]/numOfRepitions<<endl;
 		cout << "Statistics for Block Join\n";
-	    	cout <<"Average"<<" Number of Page Misses =  "<<avgPinMisses[1]/numOfRepitions<<endl;
+	    	// cout <<"Average"<<" Number of Page Misses =  "<<avgPinMisses[1]/numOfRepitions<<endl;
 		cout <<"Average"<<" Duration of Iteration = "<<avgDuration[1]/numOfRepitions<<endl;
 		delete[] avgPinMisses;delete[] avgDuration;
 }
@@ -181,17 +181,16 @@ void comparisonOfTwoJoinAlgos()
 		long *pinNo = new long[2];
 		long *pinMisses = new long[2];
 		double *duration = new double[2];
-
-		callJoins( NUM_OF_BUF_PAGES, NUM_OF_REC_IN_R, NUM_OF_REC_IN_S,pinNo,pinMisses, duration);
 		cout<<"*****************************"<<endl;
+		Joins( NUM_OF_BUF_PAGES, NUM_OF_REC_IN_R, NUM_OF_REC_IN_S,pinNo,pinMisses, duration);		
 		cout<<"Number of Buffer Pages are: "<<NUM_OF_BUF_PAGES<<endl;
 		cout<<"The number of records in R are: "<<NUM_OF_REC_IN_R<<"\n";
 		cout<<"The number of records in S are: "<<NUM_OF_REC_IN_S<<"\n";
 		cout << "Statistics for Tuple Join\n";
-	    	cout <<numOfRepetition+" Number of Page Misses =  "<<pinMisses[0]<<endl;
+	    // cout <<numOfRepetition+" Number of Page Misses =  "<<pinMisses[0]<<endl;
 		cout <<numOfRepetition+" Duration of Iteration = "<<duration[0]<<endl;
 		cout << "Statistics for Block Join\n";
-	    	cout <<numOfRepetition+" Number of Page Misses =  "<<pinMisses[1]<<endl;
+	    // cout <<numOfRepetition+" Number of Page Misses =  "<<pinMisses[1]<<endl;
 		cout <<numOfRepetition+" Duration of Iteration = "<<duration[1]<<endl;
 		avgPinMisses[0] += pinMisses[0];
 		avgDuration[0] += duration[0];
@@ -204,15 +203,15 @@ void comparisonOfTwoJoinAlgos()
 	}
 	cout<<"*** Average Statistics ***";
 		cout << "Statistics for Tuple Join\n";
-	    	cout <<"Average"<<" Number of Page Misses =  "<<avgPinMisses[0]/numOfRepitions<<endl;
+	    	// cout <<"Average"<<" Number of Page Misses =  "<<avgPinMisses[0]/numOfRepitions<<endl;
 		cout <<"Average"<<" Duration of Iteration = "<<avgDuration[0]/numOfRepitions<<endl;
 		cout << "Statistics for Block Join\n";
-	    	cout <<"Average"<<" Number of Page Misses =  "<<avgPinMisses[1]/numOfRepitions<<endl;
+	    	// cout <<"Average"<<" Number of Page Misses =  "<<avgPinMisses[1]/numOfRepitions<<endl;
 		cout <<"Average"<<" Duration of Iteration = "<<avgDuration[1]/numOfRepitions<<endl;
 		delete[] avgPinMisses;delete[] avgDuration;
 }
 
-void callJoins( int numOfBuf, int numOfRecR, int numOfRecS, long pinNo[2], 
+void Joins( int numOfBuf, int numOfRecR, int numOfRecS, long pinNo[2], 
 	 long pinMisses[2], double duration[2] )
 {
 	remove( "MINIBASE.DB" ); 		
@@ -240,8 +239,11 @@ void callJoins( int numOfBuf, int numOfRecR, int numOfRecS, long pinNo[2],
 	CreateSpecForS(specOfS);
 
 	int blocksize = 50;
+	cout << "\nBuffer statistics for Tuple Nested Loop Join\n";
 	TupleNestedLoopJoin(specOfR, specOfS,pinNo[0], pinMisses[0], duration[0]);
+	MINIBASE_BM->PrintStat();
+	cout << "\nBuffer statistics for Block Nested Loop Join\n";
 	BlockNestedLoopJoin(specOfR, specOfS, blocksize, pinNo[1] ,pinMisses[1], duration[1]);
-
+	MINIBASE_BM->PrintStat();
 	delete minibase_globals;
 }
