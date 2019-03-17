@@ -1,0 +1,142 @@
+*****************************
+
+Buffer statistics for Tuple Nested Loop Join
+** Buffer Manager Statistics **
+Number of Dirty Pages Written to Disk: 0
+Number of Pin Page Requests: 576469
+Number of Pin Page Request Misses: 747
+
+Buffer statistics for Block Nested Loop Join
+** Buffer Manager Statistics **
+Number of Dirty Pages Written to Disk: 0
+Number of Pin Page Requests: 76720
+Number of Pin Page Request Misses: 748
+
+Number of Buffer Pages are: 100
+The number of records in R are: 10000
+The number of records in S are: 2500
+Statistics for Tuple Join
+ Duration of Iteration = 0.9
+Statistics for Block Join
+ Duration of Iteration = 0.28
+*****************************
+*** Average Statistics ***
+Statistics for Tuple Join
+Average Duration of Iteration = 0.9
+Statistics for Block Join
+Average Duration of Iteration = 0.28
+*****************************
+
+Buffer statistics for Tuple Nested Loop Join
+** Buffer Manager Statistics **
+Number of Dirty Pages Written to Disk: 0
+Number of Pin Page Requests: 576469
+Number of Pin Page Request Misses: 747
+
+Buffer statistics for Block Nested Loop Join
+** Buffer Manager Statistics **
+Number of Dirty Pages Written to Disk: 0
+Number of Pin Page Requests: 76720
+Number of Pin Page Request Misses: 748
+
+Number of Buffer Pages are: 100
+The number of records in R are: 10000
+The number of records in S are: 2500
+Statistics for Tuple Join
+ Duration of Iteration = 0.92
+Statistics for Block Join
+ Duration of Iteration = 0.27
+*****************************
+*****************************
+
+Buffer statistics for Tuple Nested Loop Join
+** Buffer Manager Statistics **
+Number of Dirty Pages Written to Disk: 0
+Number of Pin Page Requests: 576469
+Number of Pin Page Request Misses: 747
+
+Buffer statistics for Block Nested Loop Join
+** Buffer Manager Statistics **
+Number of Dirty Pages Written to Disk: 0
+Number of Pin Page Requests: 76720
+Number of Pin Page Request Misses: 748
+
+Number of Buffer Pages are: 100
+The number of records in R are: 10000
+The number of records in S are: 2500
+Statistics for Tuple Join
+Duration of Iteration = 0.96
+Statistics for Block Join
+Duration of Iteration = 0.27
+*****************************
+*****************************
+
+Buffer statistics for Tuple Nested Loop Join
+** Buffer Manager Statistics **
+Number of Dirty Pages Written to Disk: 0
+Number of Pin Page Requests: 576469
+Number of Pin Page Request Misses: 747
+
+Buffer statistics for Block Nested Loop Join
+** Buffer Manager Statistics **
+Number of Dirty Pages Written to Disk: 0
+Number of Pin Page Requests: 76720
+Number of Pin Page Request Misses: 748
+
+Number of Buffer Pages are: 100
+The number of records in R are: 10000
+The number of records in S are: 2500
+Statistics for Tuple Join
+uration of Iteration = 0.95
+Statistics for Block Join
+uration of Iteration = 0.26
+*****************************
+*****************************
+
+Buffer statistics for Tuple Nested Loop Join
+** Buffer Manager Statistics **
+Number of Dirty Pages Written to Disk: 0
+Number of Pin Page Requests: 576469
+Number of Pin Page Request Misses: 747
+
+Buffer statistics for Block Nested Loop Join
+** Buffer Manager Statistics **
+Number of Dirty Pages Written to Disk: 0
+Number of Pin Page Requests: 76720
+Number of Pin Page Request Misses: 748
+
+Number of Buffer Pages are: 100
+The number of records in R are: 10000
+The number of records in S are: 2500
+Statistics for Tuple Join
+ration of Iteration = 0.92
+Statistics for Block Join
+ration of Iteration = 0.26
+*****************************
+*****************************
+
+Buffer statistics for Tuple Nested Loop Join
+** Buffer Manager Statistics **
+Number of Dirty Pages Written to Disk: 0
+Number of Pin Page Requests: 576469
+Number of Pin Page Request Misses: 747
+
+Buffer statistics for Block Nested Loop Join
+** Buffer Manager Statistics **
+Number of Dirty Pages Written to Disk: 0
+Number of Pin Page Requests: 76720
+Number of Pin Page Request Misses: 748
+
+Number of Buffer Pages are: 100
+The number of records in R are: 10000
+The number of records in S are: 2500
+Statistics for Tuple Join
+ation of Iteration = 0.97
+Statistics for Block Join
+ation of Iteration = 0.27
+*****************************
+*** Average Statistics ***
+Statistics for Tuple Join
+Average Duration of Iteration = 0.944
+Statistics for Block Join
+Average Duration of Iteration = 0.266
