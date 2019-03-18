@@ -22,9 +22,10 @@ void changingTheBufferPoolSize();
 void interchanging_call_joins();
 int main()
 {
-	//comparisonOfTwoJoinAlgos();
-	//changingTheBufferPoolSize();
-	interchanging_call_joins();	
+	comparisonOfTwoJoinAlgos();
+	changingTheBufferPoolSize();
+	interchanging_call_joins();
+	return 0;
 }
 void interchanging_call_joins()
 {

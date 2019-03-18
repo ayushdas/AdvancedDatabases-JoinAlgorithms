@@ -151,13 +151,13 @@ Number of Buffer Pages are: 100
 The number of records in R are: 10000
 The number of records in S are: 2500
 Statistics for Tuple Join
-ration of Iteration = 0.94
+Duration of Iteration = 0.94
 Statistics for Block Join
-ration of Iteration = 0.25
+Duration of Iteration = 0.25
 Statistics for interchanged Tuple Join
-ration of Iteration = 2.66
+Duration of Iteration = 2.66
 Statistics for interchanged Block Join
-ration of Iteration = 0.28
+Duration of Iteration = 0.28
 *****************************
 *****************************
 
